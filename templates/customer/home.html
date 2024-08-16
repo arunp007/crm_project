@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #container-1{
+            background-color: rgb(239, 239, 239);
+            height: 700px !important;
+        }
+
+        .logo{
+            width: 170px;
+            height: 170px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: -25px;
+            margin-bottom: 35px;
+        }
+
+        .navigation-link{
+            color: gray;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: block !important;
+            margin-left: 40px;
+        }
+
+        .navigation-link:hover{
+            text-decoration: none !important;
+            color: grey !important;
+        }
+
+        .navigation-link.active{
+            color: black !important;
+        }
+
+        .fa-dashboard{
+            color: lightseagreen;
+            margin-right: 5px;
+        }
+
+        .fa-comments{
+            color:  darkblue;
+            margin-right: 5px;
+        }
+
+        .fa-pie-chart{
+            color: green;
+            margin-right: 5px;
+        }
+
+        .fa-file-text{
+            color: red;
+            margin-right: 5px;
+        }
+
+        .navbar{
+            height: 80px;
+            margin-left: -15px !important;
+            margin-right: -15px !important;
+            background-color: white !important;
+            border-bottom: 2px solid lightgray;
+        }
+
+        .form-control{
+            width: 350px;
+            border-radius: 100px;
+            margin-left: 20px;
+        }
+
+        .fa-search{
+            margin-left: -38px;
+            margin-top: 10px;
+        }
+
+        .profile{
+            border-left: 2px solid lightgray;
+        }
+
+        .profile-pic{
+            width: 50px;
+            height: 50px;
+            margin-left: 20px; 
+        }
+
+        .profile-name{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .show{
+            display: block;
+        }
+
+        .heading{
+            margin-top: 30px;
+            font-size: 35px;
+            font-weight: bolder;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .description{
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-primary{
+            border-radius: 100px;
+            margin-left: 20px;
+            margin-bottom: 50px;
+        }
+
+        .sub-heading{
+            margin-top: 40px;
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .sub-description{
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .card{
+            margin-top: 50px;
+            padding-top: 20px;
+            padding-left: 10px;
+            padding-bottom: 20px;
+            height: 230px;
+            margin-bottom: 10px;
+        }
+
+        .circles-small {
+            margin: 0 auto;
+            width: 400px;
+            height: 80px;
+            text-align: center;
+        }
+
+        .circle-small {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 20px;
+        }
+
+        .circle-small svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .circle-small .bg {
+            fill: none;
+            stroke-width: 6px;
+            stroke: lightgray;
+        }
+
+        .circle-small .progress {
+            fill: none;
+            stroke-width: 6px;
+            stroke: blue;
+            stroke-linecap: round;
+            stroke-dasharray: 185.888;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .circle-small .progress2 {
+            fill: none;
+            stroke-width: 6px;
+            stroke: green;
+            stroke-linecap: round;
+            stroke-dasharray: 232.36;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .circle-small .progress.one {
+            stroke-dashoffset: 185.888;
+          animation: one 2.5s ease-in-out, appear 1s;
+        }
+
+        .circle-small .progress.two {
+            stroke-dashoffset: 180.36;
+            animation: two 3.5s ease-in-out, appear 2s;
+        }
+
+        .circle-small .progress2.one {
+            stroke-dashoffset: 232.416;
+          animation: one 2.5s ease-in-out, appear 1s;
+        }
+
+        .circle-small .progress2.two {
+            stroke-dashoffset: 232.416;
+            animation: two 3.5s ease-in-out, appear 2s;
+        }
+
+        .circle-small .text {
+            position: absolute;
+            width: 100%;
+            top: 26px;
+            font-size: 17px;
+            text-align: center;
+            font-weight: 400;
+            line-height: 16px;
+        }
+
+        .circle-small .text .small {
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .progress-title{
+            margin-top: 20px;
+            margin-left: 10px;
+            font-weight: 20px;
+            font-weight: bolder;
+        }
+
+        .count{
+            font-size: 27px;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-left: 10px;
+
+        }
+
+        .graph{
+            width: 450px;
+            height: 300px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px){
+            #container-1{
+                background-color: rgb(239, 239, 239);
+                height: 400px !important;
+            }
+
+            .navbar{
+                height: 80px;
+                margin-left: -15px !important;
+                margin-right: -15px !important;
+                background-color: white !important;
+                border-bottom: 2px solid lightgray;
+                padding-top: 20px;
+            }
+
+            .navigation-link{
+                margin-left: 80px;
+            }
+
+            .form-control{
+                width: 185px;
+                border-radius: 100px;
+                margin-left: -5px;
+            }
+
+            .profile{
+                border-left: 0;
+                margin-top: -20px;
+            }
+
+            .profile-pic{
+                width: 30px;
+                height: 30px;
+                margin-left: 10px; 
+            }
+
+            .profile-name{
+                margin-left: -2px;
+                margin-right: -2px;
+                font-size: 8px;
+            }
+
+            .graph{
+                width: 300px;
+                height: 300px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 col-lg-2 " id="container-1">
+                <img src="{% static 'images/renova_logo.png' %}" class="logo">
+
+                <a href="{% url 'customer_home' customer_id.uid %}" class="navigation-link active"><span class="fa fa-dashboard"></span> Dashboard</a>
+
+                <a href="{% url 'complaints' customer_id.uid %}" class="navigation-link"><span class="fa fa-comments"></span> Complaints</a>
+
+
+                <a href="{% url 'sales_order' customer_id.uid %}" class="navigation-link"><span class="fa fa-pie-chart"></span> Sales Orders</a>
+
+                <a href="{% url 'customer_receipt' customer_id.uid %}" class="navigation-link"><span class="fa fa-file-text"></span> Receipt Report</a>
+            </div>
+
+            <div class="col-xs-10 col-lg-10">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <ul class="navbar-nav mr-auto">
+                            <input type="text" name="" class="form-control" placeholder="Search">
+                            <span class="fa fa-search"></span>
+                        </ul>
+                        
+                        <div class="profile">
+                            <div class="dropdown">
+                                <img src="{% static 'images/profile-icon.svg' %}" class="profile-pic" alt="Click to show menu" onclick="toggleDropdown()" style="cursor:pointer;">
+                                <div class="dropdown-content" id="myDropdown">
+
+                                    <a href="{% url 'customer_profile' customer_id.uid %}">Profile</a>
+                                   
+                                    <a href="{% url 'customer_logout' %}">Logout</a>
+                                </div>
+                            </div>
+
+                            <label class="profile-name">{{ customer_id.full_name }}</label>
+
+                        </div>
+                </nav>
+                
+                <div class="row">
+                    <div class="col-xs-7 col-lg-7" id="container-2">
+                        <h6 class="heading">Start managing <br> your business complaints!</h6>
+                        <p class="description">Create a customer complaint, and track the progress of your complaints. </p>
+                        
+                        <a href="{% url 'create_complaint' customer_id.uid %}" class="btn btn-primary">Add new complaint</a>
+
+
+                        <div class="row">
+                            <div class="col-xs-1 col-lg-1"></div>
+
+                            <div class="col-xs-5 col-lg-5">
+                                <div class="card">
+                                    <div class="circle-small">
+                                        <div class="text">10%</span>
+                                        </div>
+                                        <svg>
+                                            <circle class="bg" cx="40" cy="40" r="37"></circle>
+                                            <circle class="progress two" cx="40" cy="40" r="37"></circle>
+                                        </svg>
+                                    </div>
+                                    <h6 class="progress-title">New Complaints</h6>
+                                    <label class="count">{{ complaints }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-5 col-lg-5">
+                                <div class="card">
+                                    <div class="circle-small">
+                                        <div class="text">0%</span>
+                                        </div>
+                                        <svg>
+                                            <circle class="bg" cx="40" cy="40" r="37"></circle>
+                                            <circle class="progress2 two" cx="40" cy="40" r="37"></circle>
+                                        </svg>
+                                    </div>
+                                    <h6 class="progress-title">Resolved Complaints</h6>
+                                    <label class="count">{{ resolved }}</label>
+                                </div>
+                            </div>
+                        </div>
+    
+                    
+                    </div>
+
+                    <div class="col-xs-3 col-lg-3">
+                        <h6 class="sub-heading">Statistics</h6>
+                        <p class="sub-description">Track the statisics of your compliant.</p>
+                        <img src="data:image/png;base64,{{ graph }}" class="graph">
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+            
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+    
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown img')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

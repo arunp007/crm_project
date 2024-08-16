@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #container{
+            background: linear-gradient(#000000, #4D4855, gray);
+            height: 700px;
+        }
+
+        .logo{
+            width: 350px;
+            height: 300px;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .quotes{
+            color: white;
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            font-weight: lighter !important;
+            margin-top: -50px;
+        }
+
+        form{
+            margin-bottom: 30px;
+        }
+
+        .heading{
+            margin-top: 200px;
+            font-weight: bolder;
+            margin-left: 20px;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .sub-description{
+            font-size: 19px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-control{
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px gray  !important;
+
+        }
+
+        .form-control:focus{
+            border-color: black;
+        }
+
+        .btn-dark{
+            width: 475px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block;
+            margin-top: 30px;
+        }
+
+        .link-description{
+           margin-top: 30px; 
+           color: lightgray;
+        }
+
+        .link{
+            text-decoration: none !important;
+            color: black !important;
+            font-weight: bolder;
+            margin-left: 2px;
+        }
+
+        @media (max-width: 768px){
+            #container{
+                background: linear-gradient(#000000, #4D4855, gray);
+                height: 400px;
+            }
+
+            .logo{
+                width: 250px;
+                height: 250px;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+
+            .quotes{
+                color: white;
+                font-size: 11px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                text-align: center;
+                font-weight: lighter !important;
+                margin-top: -50px;
+            }
+
+            .heading{
+                margin-top: 50px;
+                font-weight: bolder;
+                margin-left: 20px;
+                font-size: 35px;
+                margin-bottom: 20px;
+            }
+
+            .sub-description{
+                font-size: 19px;
+                margin-left: 20px;
+                margin-bottom: 30px;
+            }
+
+            .form-control{
+                margin-bottom: 20px;
+            }
+
+            .btn-dark{
+                width: 300px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                display: block;
+                margin-top: 30px;
+            }
+
+            .link-description{
+                margin-top: 30px; 
+                font-size: 12px;
+                color: lightgray;
+            }
+
+            .link{
+                text-decoration: none !important;
+                color: black !important;
+                font-weight: bolder;
+                margin-left: 2px;
+                margin-bottom: 50px !important;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 col-lg-6" id="container">
+        
+                <img src="{% static 'images/renova_logo.png' %}" class="logo">
+                <p class="quotes">Empowers Your Business To Build Stronger Customer <br> Relationships With Renova CRM.</p>
+                
+            </div>
+
+            <div class="col-xs-1 col-lg-1"></div>
+
+            <div class="col-xs-4 col-lg-4">
+                <form method="post">
+                {% csrf_token %}
+                    <h1 class="heading">Renova</h1>
+                    {% include "base/alert.html" %}
+                    <p class="sub-description">Welcome To Renova CRM!</p>
+                    <input type="text" class="form-control" name="email_id" placeholder="Email" required>
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    <button type="submit" class="btn btn-dark">Login Now</button>
+                    <p class="link-description">Don't have an account? <a href="{% url 'admin_signup' %}" class="link">Create a new account now</a></p>
+                </form>
+            </div>
+
+            <div class="col-xs-1 col-lg-1"></div>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

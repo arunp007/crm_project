@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Add Sales Order</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+       .form-control{
+        margin-top: 10px;
+        margin-bottom: 10px;
+       }
+
+       #container{
+        margin-top: 150px;
+        margin-bottom: 100px;
+       }
+
+       .fa-angle-left{
+        color: white;
+        font-size: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+       }
+
+       .navbar{
+        height: 60px;
+       }
+
+       .btn-dark{
+        width: 478px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+       }
+
+       table{
+        margin-top: 40px;
+       }
+
+       .btn-dark{
+        width: 470px;
+        height: 40px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+       }
+       
+
+       @media (max-width: 768px){
+        .btn-dark{
+            width: 300px;
+            height: 40px;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block !important;
+        }
+
+        #container{
+        margin-top: 120px;
+       }
+       }
+    </style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <ul class="navbar-nav mr-auto">
+
+           
+            <div class="navbar-brand"><a href="{% url 'sales_orders' admin.uid %}"><span class="fa fa-angle-left"></span></a> Add Sales Order</div>
+    
+        
+        </ul>
+        
+       
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 col-lg-4"></div>
+
+            <div class="col-xs-4 col-lg-4" id="container">
+                {% include "base/alert.html" %}
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {{ form.as_p }}
+
+
+                    <div class="inline-form">
+                        <label for="sales_executive">Sales Executive:</label>
+                        <input type="text" class="form-control" name="sales_executive" placeholder="Sale Executive Name">
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="item_name">Item:</label>
+                                <input type="text" class="form-control" name="item_name" placeholder="Item Name">
+                            </div>
+
+                            <div class="col">
+                                <label for="quantity">Quantity:</label>
+                                <input type="text" class="form-control" name="quantity" placeholder="Quantity">
+                            </div>
+
+                            <div class="col">
+                                <label for="rate">Rate:</label>
+                                <input type="text" class="form-control" name="rate" placeholder="Rate">
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-dark">ADD</button>
+                    </div>
+
+                    <table border="2">
+                        <tr class="table table-dark">
+                            <th>Sales Executive</th>
+                            <th>Item Name</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th></th>
+                        </tr>
+
+                       {% for bill in item %}
+
+                        <tr>
+                            <td>{{bill.sales_executive}}</td>
+                            <td>{{bill.item_name}}</td>
+                            <td>{{bill.quantity}}</td>
+                            <td>{{bill.rate}}</td>
+                            <td><a href="{% url 'delete_bills' bill.uid %}" type="submit"><span class="fa fa-trash"></span></a></td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </table>
+                </form>
+            </div>
+
+            <div class="col-xs-4 col-lg-4"></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
