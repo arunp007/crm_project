@@ -17,12 +17,12 @@
         }
 
         .logo{
-            width: 170px;
-            height: 170px;
+            width: 200px;
+            height: 80px;
             margin-left: auto;
             margin-right: auto;
             display: block;
-            margin-top: -25px;
+            margin-top: 35px;
             margin-bottom: 35px;
         }
 
@@ -72,8 +72,14 @@
         .fa-file-text{
             color: red;
             margin-right: 5px;
+        }
+
+        .fa-phone{
+            color: black;
+            margin-right: 5px;
             padding-bottom: 50px !important;
         }
+
 
         .navbar{
             height: 80px;
@@ -223,6 +229,7 @@
                 <a href="{% url 'complaint' admin.uid %}" class="navigation-link"><span class="fa fa-comments"></span> Complaints</a>
                 <a href="{% url 'sales_orders' admin.uid %}" class="navigation-link"><span class="fa fa-pie-chart"></span> Sales Orders</a>
                 <a href="{% url 'receipt_report' admin.uid %}" class="navigation-link"><span class="fa fa-file-text"></span> Recept Report</a>
+                <a href="{% url 'contact' admin.uid %}" class="navigation-link"><span class="fa fa-phone"></span> Contact Us</a>
             </div>
 
             <div class="col-xs-10 col-lg-10">

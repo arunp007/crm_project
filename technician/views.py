@@ -138,7 +138,7 @@ def complaints(request, uid):
         return redirect('technician_login')
     
 
-def receipt(request, complaint_id):
+def add_receipt(request, complaint_id):
     complaint = get_object_or_404(Complaint, complaint_id = complaint_id)
     
     if request.method == 'POST':
@@ -155,7 +155,7 @@ def receipt(request, complaint_id):
     else:
         form = ReceiptForm()
 
-    return render(request, 'technician/receipt.html', {'form': form, 'complaint': complaint })
+    return render(request, 'technician/add_receipt.html', {'form': form, 'complaint': complaint })
 
 def add_sales_order(request, uid):
     technician = get_object_or_404(Technician, uid=uid)

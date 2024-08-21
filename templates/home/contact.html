@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .navbar{
+          height: 120px;
+          background-color: white !important;
+          font-size: 20px;
+
+        }
+
+        .collapse{
+          color: white;
+        }
+
+        .logo{
+            width:240px;
+            height: 100px;
+        }
+
+        .navbar-nav{
+          margin-left: 10px;
+        }
+
+        
+        form{
+            margin-top: 50px;
+            box-shadow: 10px 1px 10px lightgray;
+            border-left: 1px solid lightgray;
+            height: 650px;
+            padding-top: 40px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-top: 5px solid dodgerblue;
+            border-bottom: 5px solid dodgerblue;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .form-control{
+            margin-bottom: 20px;
+            border-radius: 0px;
+            border: 2px solid black ;
+        }
+
+        .form-control:focus{
+            box-shadow: none;
+
+        }
+
+        .btn-primary{
+            width: 150px;
+            border-radius: 100px;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .messages{
+            margin-top: 160px;
+        }
+
+        
+        #container-4{
+          background-color: rgb(245, 246, 247);
+          height: 630px !important;
+          margin-top: 100px;
+        }
+
+        .footer-logo{
+          width: 240px;
+          height: 100px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: 10px;
+
+        }
+
+        .footer-description{
+         margin-left: 20px;
+        }
+
+        .footer-heading{
+          color: darkblue;
+          font-size: 20px;
+          font-weight: bolder;
+          margin-top: 70px;
+          margin-bottom: 20px;
+        }
+
+        .footer-links{
+          margin-top: 20px;
+          padding-bottom: 20px;
+          text-align: center;
+          margin-left: 20px;
+          text-decoration: none !important;
+          color: black !important;
+        }
+
+        .footer-links:hover{
+          color: dodgerblue !important;
+        }
+
+        .footer-link{
+          text-decoration: none !important;
+          color: black !important;
+        }
+
+        .footer-link:hover{
+          color: dodgerblue !important;
+        }
+
+        .social-link{
+          text-decoration: none !important;
+          color:  black !important;
+        }
+
+        .fa-angle-right{
+          margin-right: 10px;
+          color:dodgerblue;
+          font-size: 20px;
+        }
+
+        .icons{
+          border-radius: 100px;
+          border: 1px solid;
+          width: 35px;
+          height: 35px;
+          margin-left: 5px;
+          margin-right: 5px;
+          margin-top: 20px;
+        }
+
+        .icons:hover{
+          color: dodgerblue;
+        }
+
+        .fa-facebook{
+          margin-left: 11px;
+          margin-top: 10px;
+          color: black !important;
+        }
+
+        .fa-facebook:hover{
+          color: dodgerblue !important;
+        }
+
+        .fa-instagram{
+          margin-left: 10px;
+          margin-top: 9px;
+          color: black !important;
+        }
+
+        .fa-instagram:hover{
+          color: dodgerblue !important;
+        }
+
+        .fa-linkedin{
+          margin-left: 10px;
+          margin-top: 8px;
+          color: black !important;
+        }
+
+        .fa-linkedin:hover{
+          color: dodgerblue !important;
+        }
+
+        .fa-whatsapp{
+          margin-top: 8px;
+          margin-left: 8px;
+          font-size: 20px;
+          color: black;
+        }
+
+        .fa-whatsapp:hover{
+          color: dodgerblue !important;
+        }
+
+        .hr{
+          margin-top: 100px !important;
+          height:  0.5px !important;
+          background-color: lightgrey!important;
+          font-weight: bolder;
+          width: 1300px;
+          margin-top: -5px;
+        }
+
+        .footer-copyright{
+          font-size: 15px;
+          margin-left: 650px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        .footer-logo-heading{
+          font-weight: bolder;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+
+
+        @media (max-width: 768px){
+          .navbar{
+            height: 130px;
+          }
+
+          .nav-link{
+            color: white !important;
+          }
+          
+          .collapse{
+            background-color: rgb(17, 39, 78);
+            height: 390px;
+            color: white;
+            padding-top: 20px;
+            padding-left: 20px;
+            opacity: none;
+          }
+
+          .dropdown-menu{
+           border-radius: 0;
+           background-color: rgb(17, 39, 78);
+           border: none;
+           padding-top: 20px;
+           padding-bottom: 20px;
+           opacity: none;
+          }
+
+          .dropdown-item{
+            color: white !important;
+            font-size: 18px;
+          }
+
+         
+          #container-4{
+            background-color: rgb(245, 246, 247);
+            height: 965px !important;
+            margin-top: 100px;
+          }
+
+          .hr{
+            margin-top: 80px !important;
+            height:  0.5px !important;
+            background-color: lightgrey!important;
+            font-weight: bolder;
+            width: 300px;
+            margin-top: -5px;
+          }
+
+          .footer-copyright{
+            font-size: 15px;
+            margin-left: 40px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+
+          .btn-primary{
+            width: 150px;
+            border-radius: 100px;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="{% url 'main_home' %}"><img src="{% static 'images/renova_logo.png' %}" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main_home' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Login now
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'admin_login' %}">Admin</a>
+              <a class="dropdown-item" href="{% url  'customer_login' %}">Customer</a>
+              <a class="dropdown-item" href="{% url 'technician_login' %}">Technician</a>
+            </div>
+          </li>
+            
+        </ul>
+          
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-xs-4 col-lg-4"></div>
+
+            <div class="col-xs-4 col-lg-4">
+                <div class="messages">{% include "base/alert.html" %}</div>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" placeholder="Email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" name="phone" placeholder="Phone Number" required>
+
+                    <label for="subject">Subject</label>
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+
+                    <label for="message">Message</label>
+                    <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+
+                    
+                </form>
+            </div>
+
+            <div class="col-xs-4 col-lg-4"></div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid" id="container-4">
+           
+        <div class="row">
+          <div class="col-xs-1 col-lg-1"></div>
+  
+          <div class="col-xs-3 col-lg-3">
+            <img src="{% static 'images/renova_logo.png' %}" class="footer-logo">
+    
+            <p class="footer-description">Renova Innovative Business LLP<br> R Max Tower, NH Malappuram <br> Phone: 9447498938, 9947161190</p>
+            <p class="footer-description">GCC Office: <br> Mazyad Mall <br> Tower 1 <br> Musaffah <br> Abu Dhabi <br> Phone: +971555017512</p>
+  
+            <a href="mailto:admin@renovaerp.com" class="footer-links">admin@renovaerp.com</a><br>
+  
+            <a href="https://renovaerp.com/" class="footer-links">www.renovaerp.com</a>
+  
+  
+          </div>
+  
+          <div class="col-xs-1 col-lg-1"></div>
+  
+          <div class="col-xs-2 col-lg-2">
+            <h3 class="footer-heading">Userful Links</h3>
+  
+            <span class="fa fa-angle-right"></span><a href="{% url 'main_home' %}" class="footer-link">Home</a><br>
+            <span class="fa fa-angle-right"></span><a href="{% url 'about' %}" class="footer-link">About us</a><br>
+              <span class="fa fa-angle-right"></span><a href="{% url 'contact' %}" class="footer-link">Contact us</a><br>
+          </div>
+  
+          <div class="col-xs-3 col-lg-3">
+            <h3 class="footer-heading">Follow us</h3>
+  
+            <label class="icons">
+              <a href="" class="social_link"><span class="fa fa-facebook"></span></a>
+            </label>
+  
+            <label class="icons">
+              <a href="" class="social_link"><span class="fa fa-instagram"></span></a>
+            </label>
+  
+            <label class="icons">
+              <a href="" class="social_link"><span class="fa fa-linkedin"></span></a>
+            </label>
+
+            <label class="icons">
+              <a href="" class="social-link"><span class="fa fa-whatsapp"></span></a>
+            </label>
+  
+          </div>
+  
+          <div class="col-xs-2 col-lg-2"></div>
+  
+          <div class="col-xs-12 col-lg-12">
+            <hr class="hr">
+            <label class="footer-copyright"><span class="fa fa-copyright"></span> <label class="footer-logo-heading">Renova</label> All Rights Reserved</label>
+          </div>
+  
+        </div>
+    </div>
+  
+
+
+
+    
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

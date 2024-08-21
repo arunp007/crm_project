@@ -17,9 +17,9 @@
         }
 
         .logo{
-            width: 350px;
-            height: 300px;
-            margin-top: 100px;
+            width: 340px;
+            height: 130px;
+            margin-top: 150px;
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -31,7 +31,7 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-align: center;
             font-weight: lighter !important;
-            margin-top: -50px;
+            margin-top: 20px;
         }
 
         form{
@@ -76,6 +76,19 @@
             margin-left: 2px;
         }
 
+        .back_link{
+            margin-left: 180px !important;
+            color: black !important;
+            text-decoration: none !important;
+          
+        }
+        
+        .fa-arrow-left{
+            color: black !important;
+            margin-right: 5px !important;
+        }
+
+
         @media (max-width: 768px){
             #container{
                 background: linear-gradient(#43cea2,#185a9d);
@@ -83,9 +96,9 @@
             }
 
             .logo{
-                width: 250px;
-                height: 250px;
-                margin-top: 20px;
+                width: 300px;
+                height: 130px;
+                margin-top: 80px;
                 margin-left: auto;
                 margin-right: auto;
                 display: block;
@@ -97,7 +110,7 @@
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 text-align: center;
                 font-weight: lighter !important;
-                margin-top: -50px;
+                margin-top: 10px;
             }
 
             .heading{
@@ -119,7 +132,7 @@
             }
 
             .btn-success{
-                width: 300px !important;
+                width: 332px !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
                 display: block;
@@ -140,6 +153,14 @@
                 margin-bottom: 50px !important;
             }
 
+            .back_link{
+                margin-left: 100px !important;
+                color: black !important;
+                text-decoration: none !important;
+          
+            }
+
+
         }
     </style>
 </head>
@@ -148,7 +169,7 @@
         <div class="row">
             <div class="col-xs-6 col-lg-6" id="container">
         
-                <img src="{% static 'images/renova_logo.png' %}" class="logo">
+                <a href="{% url 'main_home' %}"><img src="{% static 'images/renova_logo.png' %}" class="logo"></a>
                 <p class="quotes">Empowers Your Business To Build Stronger Customer <br> Relationships With Renova CRM.</p>
                 
             </div>
@@ -164,7 +185,10 @@
                     <input type="text" class="form-control" name="email_id" placeholder="Email" required>
                     <input type="password" class="form-control" name="password" placeholder="Password" required>
                     <button type="submit" class="btn btn-success">Login Now</button>
-                    <p class="link-description">Don't have an account? <a href="{% url 'technician_signup' %}" class="link">Create a new account now</a></p>
+                    <p class="link-description">Don't have an account? <a href="{% url 'technician_signup' %}" class="link">Create a new account now</a></p><br><br>
+                
+                    <a href="{% url 'main_home' %}" class="back_link"><span class="fa fa-arrow-left"></span> Back To Home</a>
+
                 </form>
             </div>
 

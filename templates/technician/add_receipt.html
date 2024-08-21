@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
-    <title>Profile</title>
+    <title>Receipt</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -17,97 +17,71 @@
        }
 
        #container{
-        margin-top: 100px;
+        margin-top: 150px;
         margin-bottom: 100px;
-       }
-
-       .fa-angle-left{
-        color: white;
-        font-size: 30px;
-        margin-left: 10px;
-        margin-right: 20px;
        }
 
        .navbar{
         height: 60px;
        }
 
-       .btn-dark{
-        width: 475px;
-        margin-top: 40px;
+       .btn-success{
+        width: 478px;
+        margin-top: 30px;
         margin-bottom: 30px;
+       }
+
+       #bill_button{
+        width: 150px !important;
+        margin-top: 20px;
+        margin-bottom: 20px;
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
        }
 
-       .delete-link{
-        margin-top:  50px !important;
-        margin-bottom: 50px !important;
-        color: red !important;
-        font-weight: bolder !important;
-        text-decoration: none !important;
-        border: none !important;
-       }
-
-       .profile{
-        width: 250px;
-        height: 250px;
-        margin-top: 10px;
-        margin-bottom: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-       }
-
        @media (max-width: 768px){
-        .btn-dark{
-            width: 331px !important;
-            margin-top: 40px;
-            margin-bottom: 30px;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            display: block !important;
-        }
-
-        .profile{
-            width: 200px;
-            height: 200px;
-            margin-top: 10px;
-            margin-bottom: 50px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-       }
+            .btn-success{
+                width: 331px !important;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
        
-       }
+            #container{
+                margin-top: 120px;
+            }
+
+        }
     </style>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
         <ul class="navbar-nav mr-auto">
+
            
-           <div class="navbar-brand"><a href="{% url 'admin_home' admin.uid %}"><span class="fa fa-angle-left"></span></a> Edit Profile</div>
+           <div class="navbar-brand"> Receipt</div>
+    
+        
         </ul>
         
        
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 col-lg-4">
-                
-            </div>
+            <div class="col-xs-4 col-lg-4"></div>
 
             <div class="col-xs-4 col-lg-4" id="container">
                 {% include "base/alert.html" %}
                 <form method="post">
                     {% csrf_token %}
 
-                    <img src="{% static 'images/profile-icon.svg' %}" class="profile">
+                    {{ form.receipt_date.label }} {{ form.receipt_date }}
 
-                    {{form.as_p}}
-                    <button type="submit" class="btn btn-dark">Enter</button>
+                    {{ form.payment_type.label }} {{ form.payment_type }}
 
-                    <a href="{% url 'delete_admin' admin.uid %}" class="delete-link">Delete Account</a>
+                    {{ form.receipt_amount.label }} {{ form.receipt_amount }}
+
+                   
+                    <button type="submit" class="btn btn-success">Save</button>
                 </form>
             </div>
 

@@ -11,6 +11,7 @@ import urllib, base64
 from django.contrib import messages
 from adminapp.forms import AdminForm
 from technician.models import Receipt
+from home.models import Contact
 
 
 def home(request, uid):
@@ -265,4 +266,10 @@ def receipt_report(request, uid):
     
     else:
         return redirect('admin_login')
+    
+
+def contact(request, uid):
+    admin = get_object_or_404(Admin, uid = uid)
+    contact = Contact.objects.all()
+    return render(request, 'admin/contact_us.html', {'admin': admin, 'contact': contact})
 
