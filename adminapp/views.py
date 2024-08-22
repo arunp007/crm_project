@@ -26,6 +26,7 @@ def home(request, uid):
         resolved = Complaint.objects.filter(is_resolve=True).count()
         sales_order = SalesOrder.objects.count()
         receipt_report = Receipt.objects.count()
+        contact = Contact.objects.count()
 
         #is_active members
         customer_is_active = Customer.objects.filter(is_active = True).count()
@@ -53,7 +54,7 @@ def home(request, uid):
         image_base64 = base64.b64encode(image_png)
         image_base64 = image_base64.decode('utf-8')
 
-        return render(request, 'admin/home.html', {'admin': admin, 'customer': customer, 'technician': technician, 'complaint': complaint, 'resolved': resolved, 'sales_order': sales_order, 'receipt_report': receipt_report, 'graph': image_base64, 'customer_is_active': customer_is_active, 'technician_is_active': technician_is_active})
+        return render(request, 'admin/home.html', {'admin': admin, 'customer': customer, 'technician': technician, 'complaint': complaint, 'resolved': resolved, 'sales_order': sales_order, 'receipt_report': receipt_report, 'graph': image_base64, 'customer_is_active': customer_is_active, 'technician_is_active': technician_is_active, 'contact': contact})
 
     else:
         return redirect('admin_login')
