@@ -23,6 +23,7 @@ class Complaint(BaseModel):
         ('Paid', 'Paid'),
         ('Not Paid', 'Not Paid'),
         ('Cancelled', 'Cancelled'),
+        ('Free', 'Free'),
     ]
 
     TICKET_STATUS = [

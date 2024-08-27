@@ -95,7 +95,7 @@ def create_complaint(request, uid):
     if request.method == 'POST':
         show_fields = {
         'technician': False,  # False to hide and not required
-        'token': False,  # False to hide and not required
+        'token': False, 
         'token_number': False,
         'machine_type': False,
         'machine_model': False,
