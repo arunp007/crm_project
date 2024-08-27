@@ -21,7 +21,7 @@ class ComplaintForm(forms.ModelForm):
         model = Complaint
         fields = ['complaint_id', 'complaint_date', 'customer_type', 'complaint_type', 'technician', 'token', 'token_number', 'machine_type', 'machine_model', 'machine_no', 'payment_status', 'payment_type', 'collected_amount', 'ticket_status', 'is_resolve']
         widgets = {
-            'complaint_id': forms.TextInput(attrs={'class': 'form-control', 'type': 'number', }),
+            'complaint_id': forms.TextInput(attrs={'class': 'form-control' }),
             'complaint_date': forms.DateInput(attrs = {'class': 'form-control', 'type': 'date',}),
         }
 
@@ -114,8 +114,7 @@ class ComplaintForm(forms.ModelForm):
             self.fields['ticket_status'].widget = forms.HiddenInput()
 
         if show_fields.get('is_resolve'):
-            self.fields['is_resolve'].initial = True
-            self.fields['is_resolve'].required = True
+            self.fields['is_resolve'].initial = False
             self.fields['is_resolve'].widget = forms.CheckboxInput()
 
         else:

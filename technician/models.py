@@ -5,8 +5,8 @@ class ComplaintBilling(models.Model):
     complaint = models.ForeignKey(Complaint, on_delete=models.CASCADE)
     billing_id = models.AutoField(primary_key=True)
     item_name = models.CharField(max_length=225)
-    quantity = models.ImageField()
-    rate = models.FloatField()
+    quantity = models.TextField(max_length=100)
+    rate = models.FloatField(max_length=100)
 
     class Meta:
         db_table = 'complaint_bill'

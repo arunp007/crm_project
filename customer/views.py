@@ -159,17 +159,10 @@ def create_sales_order(request, uid):
         form = SalesOrderForm()
 
 
-    #fetching billing item and filter by uid
-
     item = BillingItem.objects.all()
 
     return render(request, 'customer/create_sales_order.html', {'form': form, 'customer': customer, 'item': item})
 
-
-def delete_bill(request, uid):
-    bill = BillingItem.objects.get(uid = uid)
-    bill.delete()
-    return redirect('create_sales_order', bill.sales_order)
 
 def sales_order(request, uid):
     customer_id = get_object_or_404(Customer, uid = uid)

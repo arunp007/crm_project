@@ -39,7 +39,7 @@ class Complaint(BaseModel):
         ('Not Paid', 'Not Paid'),
     ]
 
-    complaint_id = models.CharField(max_length = 50)
+    complaint_id = models.TextField(max_length = 50)
     complaint_date = models.DateField()
     customer = models.ForeignKey(Customer, on_delete = models.CASCADE)
     customer_type = models.CharField(max_length = 50, choices=CUSTOMER_TYPE_CHOICES)

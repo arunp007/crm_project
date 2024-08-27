@@ -10,6 +10,5 @@ urlpatterns = [
     path('complaints/<str:uid>/', views.complaints, name = 'complaints'),
     path('sales_orders/<str:uid>/', views.sales_order, name = 'sales_order'),
     path('sales_orders/create/<str:uid>/', views.create_sales_order, name = 'create_sales_order'),
-    path('delete_bill/<str:uid>/', views.delete_bill, name = 'delete_bill'),
     path('receipts/<str:uid>/', views.receipt, name = 'customer_receipt'),
 ]

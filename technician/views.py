@@ -88,36 +88,41 @@ def delete_profile(request, uid):
     return redirect('technician_login')
 
 def add_complaint(request, complaint_id):
-    complaint = get_object_or_404(Complaint, complaint_id = complaint_id)
+    complaint = get_object_or_404(Complaint, complaint_id=complaint_id)
+    bill = ComplaintBilling.objects.filter(complaint_id=complaint)
 
     if request.method == 'POST':
-        bill = ''
-        form = ComplaintForm(request.POST, show_fields={'technician': True, 'token': True, 'token_number': True, 'machine_type': True, 'machine_model': True, 'machine_no': True, 'payment_status': True, 'payment_type': True, 'collected_amount': True, 'ticket_status': True, 'is_resolve': True}, instance = complaint)
-        item_name = request.POST['item_name']
-        quantity = request.POST['quantity']
-        rate = request.POST['rate']
+        
+        form = ComplaintForm(request.POST, show_fields={'technician': True, 'token': True, 'token_number': True, 'machine_type': True, 'machine_model': True, 'machine_no': True, 'payment_status': True, 'payment_type': True, 'collected_amount': True, 'ticket_status': True, 'is_resolve': True}, instance=complaint)
 
-        complaint_bill = ComplaintBilling(complaint = complaint, item_name = item_name, quantity = quantity, rate = rate)
-        complaint_bill.save()
-        
-        messages.success(request, "Bill Created!")
-
-        
-        
         if form.is_valid():
             form.save()
-            messages.success(request, "Complaint Created!")
 
+            item_name = request.POST.get('item_name')
+            quantity = request.POST.get('quantity')
+            rate = request.POST.get('rate')
+
+            if item_name and quantity and rate:
+
+                complaint_bill = ComplaintBilling(complaint=complaint, item_name=item_name, quantity=quantity, rate=rate)
+
+                complaint_bill.save()
+
+                messages.success(request, "Bill Created!")
+
+            messages.success(request, "Complaint Updated!")
+
+        else:
+            messages.warning(request, "There was an error updating the complaint.")
 
     else:
-        form = ComplaintForm(instance = complaint, show_fields={'technician': True, 'token': True, 'token_number': True, 'machine_type': True, 'machine_model': True, 'machine_no': True, 'payment_status': True, 'payment_type': True, 'collected_amount': True, 'ticket_status': True, 'is_resolve': True}) 
 
-    bill = ComplaintBilling.objects.filter(complaint_id = complaint)
+        form = ComplaintForm(instance=complaint, show_fields={'technician': True, 'token': True, 'token_number': True, 'machine_type': True, 'machine_model': True, 'machine_no': True, 'payment_status': True, 'payment_type': True, 'collected_amount': True, 'ticket_status': True, 'is_resolve': True})
 
     total_price = sum(b.rate for b in bill)
-    
 
-    return render(request, 'technician/add_complaint.html', {'form': form, 'complaint': complaint, 'bill': bill, 'total_price': total_price}) 
+    return render(request, 'technician/add_complaint.html', {'form': form, 'complaint': complaint, 'bill': bill, 'total_price': total_price })
+
 
 def delete_complaint_bill(request, billing_id):
     complaint_bill = get_object_or_404(ComplaintBilling, billing_id = billing_id)
@@ -189,12 +194,6 @@ def add_sales_order(request, uid):
     item = BillingItem.objects.all()
 
     return render(request, 'technician/add_sales_order.html', {'form': form, 'technician': technician, 'item': item})
-
-
-def delete_bill(request, uid):
-    bill = BillingItem.objects.get(uid = uid)
-    bill.delete()
-    return redirect('creating_sales_order', bill.sales_order)
 
 
 

@@ -12,9 +12,8 @@ urlpatterns = [
     path('profile/delete/<str:uid>/', views.delete_admin, name = 'delete_admin'),
     path('sales_orders/<str:uid>/', views.sales_orders, name = 'sales_orders'),
     path('sales_orders/create/<str:uid>/', views.add_sales_order, name = 'add_sales_order'),
-    path('delete_bills/<str:uid>/', views.delete_bills, name = 'delete_bills'),
     path('complaints/<str:uid>/', views.complaint, name = 'complaint'),
-    path('complaints/create/<int:complaint_id>/', views.add_complaint, name = 'add_complaint'),
+    path('complaints/create/<str:complaint_id>/', views.add_complaint, name = 'add_complaint'),
     path('receipt_report/<str:uid>/', views.receipt_report, name = 'receipt_report'),
     path('contact/<str:uid>/', views.contact, name = 'contact'),
 ]

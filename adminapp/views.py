@@ -210,12 +210,6 @@ def add_sales_order(request, uid):
     return render(request, 'admin/add_sales_order.html', {'form': form, 'admin': admin, 'item': item})
 
 
-def delete_bills(request, uid):
-    bill = BillingItem.objects.get(uid = uid)
-    bill.delete()
-    return redirect('add_sales_order', bill.sales_order)
-
-
 def complaint(request, uid):
     admin = get_object_or_404(Admin, uid = uid)
 
